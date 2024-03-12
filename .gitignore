@@ -8,6 +8,13 @@
 *.so
 *.dylib
 
+logs/
+data/
+bundle.crt
+private.key
+password.txt
+
+
 # Test binary, built with `go test -c`
 *.test
 
