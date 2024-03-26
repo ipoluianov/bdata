@@ -11,7 +11,9 @@ import (
 func main() {
 	//bybit.Start()
 
-	bitcoinclient.CheckConnect()
+	bitcoinclient.ParseRawFile()
+
+	//bitcoinclient.CheckConnect()
 	return
 
 	application.Name = "bdata"
