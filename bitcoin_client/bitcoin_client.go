@@ -184,6 +184,7 @@ func OptimizeFiles() {
 	}
 
 	for _, fileInfo := range files {
+		addrsMap := make(map[string]struct{})
 		fmt.Println(fileInfo.Name())
 		content, err := os.ReadFile("data/parts/" + fileInfo.Name())
 		if err != nil {
@@ -194,6 +195,14 @@ func OptimizeFiles() {
 			return r == '\r' || r == '\n'
 		})
 		fmt.Println("addresses:", len(addrs))
+		for _, a := range addrs {
+			addrsMap[a] = struct{}{}
+		}
+		addrList := make([]string, 0)
+		for key := range addrsMap {
+			addrList = append(addrList, key)
+		}
+		fmt.Println("map size:", len(addrList))
 	}
 }
 
