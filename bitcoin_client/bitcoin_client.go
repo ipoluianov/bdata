@@ -184,6 +184,10 @@ func OptimizeFiles() {
 	}
 
 	for _, fileInfo := range files {
+		resultFile, err := os.OpenFile("data/result.txt", os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666)
+		if err != nil {
+			fmt.Println("Open for write file error:", err)
+		}
 		addrsMap := make(map[string]struct{})
 		fmt.Println(fileInfo.Name())
 		content, err := os.ReadFile("data/parts/" + fileInfo.Name())
@@ -203,6 +207,12 @@ func OptimizeFiles() {
 			addrList = append(addrList, key)
 		}
 		fmt.Println("map size:", len(addrList))
+		fmt.Print("writing ... ")
+		for _, a := range addrList {
+			resultFile.WriteString(a + "\r\n")
+		}
+		fmt.Println("ok")
+		resultFile.Close()
 	}
 }
 
