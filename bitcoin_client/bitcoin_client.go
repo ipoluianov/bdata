@@ -185,6 +185,15 @@ func OptimizeFiles() {
 
 	for _, fileInfo := range files {
 		fmt.Println(fileInfo.Name())
+		content, err := os.ReadFile("data/parts/" + fileInfo.Name())
+		if err != nil {
+			fmt.Println("Read file error:", err)
+		}
+		fmt.Println("parsing ...")
+		addrs := strings.FieldsFunc(string(content), func(r rune) bool {
+			return r == '\r' || r == '\n'
+		})
+		fmt.Println("addresses:", len(addrs))
 	}
 }
 
