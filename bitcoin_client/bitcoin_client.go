@@ -208,9 +208,12 @@ func OptimizeFiles() {
 		}
 		fmt.Println("map size:", len(addrList))
 		fmt.Print("writing ... ")
+		result := make([]byte, 0)
 		for _, a := range addrList {
-			resultFile.WriteString(a + "\r\n")
+			result = append(result, []byte(a)...)
+			result = append(result, []byte("\r\n")...)
 		}
+		resultFile.Write(result)
 		fmt.Println("ok")
 		resultFile.Close()
 	}
