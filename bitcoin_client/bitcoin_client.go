@@ -176,6 +176,18 @@ func CheckConnect() {
 
 }
 
+func OptimizeFiles() {
+	fmt.Println("Optimizing files")
+	files, err := os.ReadDir("data/parts")
+	if err != nil {
+		fmt.Println("")
+	}
+
+	for _, fileInfo := range files {
+		fmt.Println(fileInfo.Name())
+	}
+}
+
 func ParseRawFile() {
 	filePath := "data/addrs.txt"
 	os.MkdirAll("data/parts", 0777)

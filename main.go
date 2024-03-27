@@ -11,7 +11,7 @@ import (
 func main() {
 	//bybit.Start()
 
-	bitcoinclient.ParseRawFile()
+	bitcoinclient.OptimizeFiles()
 
 	//bitcoinclient.CheckConnect()
 	return
